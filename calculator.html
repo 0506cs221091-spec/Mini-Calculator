@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator task</title>
+    <style>
+        *{
+            text-align: center;
+        }
+
+        h1{
+            font-size: 40px;
+            color: rgb(56, 56, 158);
+            margin-bottom: 50px;
+        }
+        .calculator {
+            width: 500px;
+            height: 500px;
+            padding: 40px;
+            margin: auto;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        }
+
+        #input {
+            width: 450px;
+            height: 60px;
+            box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+            padding: 5px;
+            margin: auto;
+            border-radius: 15px;
+            margin-bottom: 20px;
+        }
+
+        #keyboard {
+            width: 450px;
+            height: 360px;
+            padding: 5px;
+            margin: auto;
+            display: grid;
+            gap: 20px;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: auto;
+        }
+
+        #keyboard>div {
+            box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+            text-align: center;
+            padding-top: 25px;
+            font-weight: 900;
+            font-size: 20px;
+            border-radius: 15px;
+        }
+        
+        #keyboard>div:hover {
+cursor: pointer;
+background-color: #e8b8b8;
+        }
+        #blk{
+            background-color: black;
+            color: white;
+        }
+        #rd{
+            background-color: red;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Coding Thinker calculator</h1>
+
+    <div class="calculator">
+        <div id="input"></div>
+        <div id="keyboard">
+            <div>1</div>
+            <div>2</div>
+            <div>3</div>
+            <div id="blk">+</div>
+            <div>4</div>
+            <div>5</div>
+            <div>6</div>
+            <div id="blk">-</div>
+            <div>7</div>
+            <div>8</div>
+            <div>9</div>
+            <div id="blk">*</div>
+            <div id="rd">C</div>
+            <div>0</div>
+            <div id="blk">=</div>
+            <div id="blk">/</div>
+        </div>
+    </div>
+</body>
+
+</html>
+<script>
+    let bag = "";
+    let keys = document.querySelectorAll("#keyboard>div");
+    for (let i = 0; i < keys.length; i++) {
+        keys[i].addEventListener("click", mycalculator);
+    }
+    function mycalculator(e) {
+        let targetnumber = e.target.innerText;
+        if (targetnumber == "C") {
+            bag = "";
+            document.querySelector("#input").innerText = bag;
+        } else if (targetnumber == "=") {
+            let ans = eval(bag)
+            document.querySelector("#input").innerText = ans;
+
+        }
+        else {
+            bag = bag + targetnumber
+            document.querySelector("#input").innerText = bag;
+
+        }
+    }
+</script>
